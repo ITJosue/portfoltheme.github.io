@@ -56,6 +56,15 @@
       {% endfor %}
 
       <span id="theme-toggler" class="nav-item nav-link" role="button" onclick="toggleTheme()"></span>
+
+      <div class="nav-item d-flex align-items-center ml-lg-3 mr-2" style="font-size: 1.5rem;">
+        {% include social.html %}
+      </div>
+
+      <span class="nav-item nav-link d-flex align-items-center text-muted" style="font-size: 0.9rem;">
+        <i class="fas fa-code"></i>&nbsp;with&nbsp;<i class="fas fa-heart"></i>&nbsp;by&nbsp;<strong>{{ site.author.name }}</strong>
+      </span>
+
     </div>
   </div>
 
