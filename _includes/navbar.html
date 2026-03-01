@@ -7,7 +7,7 @@
   </button>
 
   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-    <div class="navbar-nav ml-auto">
+    <div class="navbar-nav ml-auto align-items-center">
 
       {%- assign html_pages = site.html_pages | sort: 'weight' -%}
       {%- assign filtered_pages = "" | split: "" -%}
@@ -55,11 +55,9 @@
 
       {% endfor %}
 
-      <span id="theme-toggler" class="nav-item nav-link" role="button" onclick="toggleTheme()"></span>
+      {% include social.html %}
 
-      <div class="nav-item d-flex align-items-center ml-lg-3 mr-2" style="font-size: 1.5rem;">
-        {% include social.html %}
-      </div>
+      <span id="theme-toggler" class="nav-item nav-link" style="font-size: 1.5rem;" role="button" onclick="toggleTheme()"></span>
 
     </div>
   </div>
