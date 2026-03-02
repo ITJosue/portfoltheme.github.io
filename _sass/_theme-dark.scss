@@ -78,8 +78,16 @@ $dark-900: #1c1c1e; // System Background (Primary)
     text-decoration: none;
   }
 
-  // Timeline 
-  .timeline-body .timeline-item:after{
-    background-color: $dark-900;
+// Timeline 
+  .timeline-body {
+    background-color: $dark-600; // Gives the timeline a distinct, elevated background
+    border-radius: 0.5rem; // Ensures it keeps the soft rounded corners seen in light mode
+
+    .timeline-item {
+      border-bottom-color: $dark-300; // Makes the dotted separator lines visible using System Gray 4
+    }
+
+    .timeline-item:after {
+      background-color: $dark-600; // Matches the dot's "hollow" mask to the new container background
+    }
   }
-}
