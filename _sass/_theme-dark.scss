@@ -1,8 +1,7 @@
-// Swift Default Dark Mode System Colors
-$dark-100: #8e8e93; // System Gray
-$dark-300: #48484a; // System Gray 4
-$dark-600: #2c2c2e; // System Gray 6 (Secondary System Background)
-$dark-900: #1c1c1e; // System Background (Primary)
+$dark-100: $dark;
+$dark-300: #2c3032;
+$dark-600: #242526;
+$dark-900: #17191a;
 
 [data-theme="dark"] {
   body {
@@ -58,7 +57,7 @@ $dark-900: #1c1c1e; // System Background (Primary)
     }
 
     tr:nth-child(even) {
-      background-color: #000000; // Pure black for table striping in dark mode
+      background-color: $dark;
     }
   }
 
@@ -78,16 +77,8 @@ $dark-900: #1c1c1e; // System Background (Primary)
     text-decoration: none;
   }
 
-// Timeline 
-  .timeline-body {
-    background-color: $dark-600; // Gives the timeline a distinct, elevated background
-    border-radius: 0.5rem; // Ensures it keeps the soft rounded corners seen in light mode
-
-    .timeline-item {
-      border-bottom-color: $dark-300; // Makes the dotted separator lines visible using System Gray 4
-    }
-
-    .timeline-item:after {
-      background-color: $dark-600; // Matches the dot's "hollow" mask to the new container background
-    }
+  // Timeline 
+  .timeline-body .timeline-item:after{
+    background-color: $dark-900;
   }
+}
