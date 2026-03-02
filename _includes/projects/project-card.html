@@ -1,33 +1,39 @@
 <div class="col-md-6 col-lg-4 mb-4 wow animated fadeIn" data-wow-delay=".15s">
   <a href="{{ project_url }}" class="project card text-themed h-100"{% if external and site.open_new_tab %} target="_blank"{% endif %}>
     
-    <div class="card-img-container" style="height: 200px; overflow: hidden;">
-      {%- if project_url contains "github.com" and project_has_pages -%}
-        {% assign url_parts = project_url | remove: "https://" | remove: "http://" | split: "/" %}
-        {% assign gh_user = url_parts[1] %}
-        {% assign gh_repo = url_parts[2] %}
-        {% assign gh_pages_url = "https://" | append: gh_user | append: ".github.io/" | append: gh_repo %}
-        
-        <img 
-          id="{{ project_id }}-img" 
-          class="card-img-top w-100 h-100" 
-          style="object-fit: cover;"
-          src="https://api.microlink.io?url={{ gh_pages_url | url_encode }}&screenshot=true&meta=false&embed=screenshot.url" 
-          alt="Preview of {{ project_name }} GH Page" 
-          loading="lazy"
-        />
+    <div class="card-img-container" style="height: 180px; background: #f8f9fa; overflow: hidden;">
+      {%- if project_url -%}
+        {%- if project_url contains "github.com" -%}
+          {% assign url_parts = project_url | remove: "https://" | remove: "http://" | split: "/" %}
+          {% assign gh_user = url_parts[1] %}
+          {% assign gh_repo = url_parts[2] %}
+          
+          {%- if gh_repo contains "github.io" or project_name contains "fizz" -%}
+            {% assign gh_pages_url = "https://" | append: gh_user | append: ".github.io/" | append: gh_repo %}
+            <img 
+              id="{{ project_id }}-img" 
+              class="card-img-top w-100 h-100" 
+              style="object-fit: cover;"
+              src="https://api.microlink.io?url={{ gh_pages_url | url_encode }}&screenshot=true&meta=false&embed=screenshot.url" 
+              alt="Preview of {{ project_name }}" 
+              loading="lazy"
+            />
+          {%- else -%}
+            <div class="d-flex align-items-center justify-content-center h-100">
+              <i class="fab fa-github fa-4x text-light"></i>
+            </div>
+          {%- endif -%}
+        {%- else -%}
+          <img 
+            id="{{ project_id }}-img" 
+            class="card-img-top w-100 h-100" 
+            style="object-fit: cover;"
+            src="https://api.microlink.io?url={{ project_url | url_encode }}&screenshot=true&meta=false&embed=screenshot.url" 
+            alt="{{ project_name }}" 
+          />
+        {%- endif -%}
       {%- elsif project_img -%}
-        <img 
-          id="{{ project_id }}-img" 
-          class="card-img-top w-100 h-100" 
-          style="object-fit: cover;"
-          src="{{ project_img }}" 
-          alt="{{ project_name }}" 
-        />
-      {%- else -%}
-        <div class="d-flex align-items-center justify-content-center bg-light h-100">
-          <i class="fab fa-github fa-3x text-muted"></i>
-        </div>
+        <img id="{{ project_id }}-img" class="card-img-top w-100 h-100" style="object-fit: cover;" src="{{ project_img }}" alt="{{ project_name }}" />
       {%- endif -%}
     </div>
 
@@ -38,7 +44,7 @@
           {%- endif -%}
         {{ project_name }}
       </h5>
-      <p id="{{ project_id }}-desc" class="card-text">{{ project_desc }}</p>
+      <p id="{{ project_id }}-desc" class="card-text" style="font-size: 0.9rem;">{{ project_desc }}</p>
       <p id="{{ project_id }}-tools" class="card-text">
         {%- for tool in project_tools -%}
         <span class="badge badge-pill text-primary border border-primary ml-1">{{ tool }}</span>
