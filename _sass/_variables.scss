@@ -1,13 +1,14 @@
-$primary:   #007bff;
-$secondary: #6c757d;
-$success:   #28a745;
-$info:      #17a2b8;
-$warning:   #ffc107;
-$danger:    #dc3545;
-$light:     #f8f9fa;
-$dark:      #343a40;
+// Swift / Apple HIG System Colors (Light Mode)
+$primary:   #007aff; // System Blue
+$secondary: #8e8e93; // System Gray
+$success:   #34c759; // System Green
+$info:      #32ade6; // System Cyan
+$warning:   #ffcc00; // System Yellow
+$danger:    #ff3b30; // System Red
+$light:     #f2f2f7; // System Gray 6 (standard light background)
+$dark:      #1c1c1e; // Apple's standard deep dark gray
 
-$text-black: #343a40;
-$text-white: rgba(white, .9);
+$text-black: #000000; // Standard primary label color
+$text-white: rgba(white, .9); // Kept your standard white with opacity
 
 $rounded-borders: 15px;
