@@ -2,15 +2,29 @@
   <a href="{{ project_url }}" class="project card text-themed"{% if external and site.open_new_tab %} target="_blank"{% endif %}>
     
     {%- if project_url -%}
-    <img 
-      id="{{ project_id }}-img" 
-      class="card-img-top" 
-      src="https://api.microlink.io?url={{ project_url | url_encode }}&screenshot=true&meta=false&embed=screenshot.url" 
-      alt="Preview of {{ project_name }}" 
-      loading="lazy"
-    />
+      {%- if project_url contains "github.com" -%}
+        {% assign url_parts = project_url | remove: "https://" | remove: "http://" | split: "/" %}
+        {% assign gh_user = url_parts[1] %}
+        {% assign gh_repo = url_parts[2] %}
+        {% assign gh_pages_url = "https://" | append: gh_user | append: ".github.io/" | append: gh_repo %}
+        
+        <img 
+          id="{{ project_id }}-img" 
+          class="card-img-top" 
+          src="https://api.microlink.io?url={{ gh_pages_url | url_encode }}&screenshot=true&meta=false&embed=screenshot.url" 
+          alt="Preview of {{ project_name }} GH Page" 
+          loading="lazy"
+        />
+      {%- else -%}
+        <img 
+          id="{{ project_id }}-img" 
+          class="card-img-top" 
+          src="https://api.microlink.io?url={{ project_url | url_encode }}&screenshot=true&meta=false&embed=screenshot.url" 
+          alt="{{ project_name }}" 
+        />
+      {%- endif -%}
     {%- elsif project_img -%}
-    <img id="{{ project_id }}-img" class="card-img-top" src="{{ project_img }}" alt="{{ project_name }}" />
+      <img id="{{ project_id }}-img" class="card-img-top" src="{{ project_img }}" alt="{{ project_name }}" />
     {%- endif -%}
 
     <div class="card-body">
