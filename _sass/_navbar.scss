@@ -7,31 +7,29 @@
 
 .nav-link,
 .navbar-brand {
-  transition: color 0.2s $apple-transition, transform 0.1s ease;
-
   &::after {
     @extend .link-after;
     width: 0;
-    // Apply the Apple-style bezier curve here
-    transition: width 0.4s $apple-transition; 
+    transition: width 0.35s;
   }
 
   &:hover::after {
     width: 100%;
   }
-
-  // Apple HIG: Provide tactile feedback when clicking
-  &:active {
-    transform: scale(0.96); 
-    opacity: 0.8;
-  }
 }
 
 .nav-item.active {
-  font-weight: 600; // Apple uses 'Semi-bold' rather than 'Bold' for labels
+  font-weight: bold;
 
   &::after {
     @extend .link-after;
     width: 100% !important;
+  }
+}
+
+.navbar-brand {
+  margin-bottom: -14px;
+  &::after {
+    margin-top: -0.25em;
   }
 }
