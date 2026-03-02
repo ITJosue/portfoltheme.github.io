@@ -1,7 +1,8 @@
-$dark-100: $dark;
-$dark-300: #2c3032;
-$dark-600: #242526;
-$dark-900: #17191a;
+// Swift Default Dark Mode System Colors
+$dark-100: #8e8e93; // System Gray
+$dark-300: #48484a; // System Gray 4
+$dark-600: #2c2c2e; // System Gray 6 (Secondary System Background)
+$dark-900: #1c1c1e; // System Background (Primary)
 
 [data-theme="dark"] {
   body {
@@ -57,7 +58,7 @@ $dark-900: #17191a;
     }
 
     tr:nth-child(even) {
-      background-color: $dark;
+      background-color: #000000; // Pure black for table striping in dark mode
     }
   }
 
