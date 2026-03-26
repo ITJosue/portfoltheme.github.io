@@ -9,6 +9,7 @@
   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
     <div class="navbar-nav ml-auto align-items-center">
 
+      {% include projects.html %}
       {%- assign html_pages = site.html_pages | sort: 'weight' -%}
       {%- assign filtered_pages = "" | split: "" -%}
 
@@ -54,7 +55,6 @@
         <a class="nav-item nav-link {{ active_status }}" href="{{ url }}" {%- if html_page.external_url and site.open_new_tab -%} target="_blank" {%- endif -%}>{{ html_page.title }}</a>
 
       {% endfor %}
-      {% include projects.html %}
       {% include social.html %}
 
       
